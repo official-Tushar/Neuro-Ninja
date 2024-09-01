@@ -6,6 +6,7 @@
 ## Table of Contents
 
 - [Features](#features)
+- [Deployment](#deployment)
 - [Screenshots](#screenshots)
 - [How to Play](#how-to-play)
 - [Future Scope](#future-scope)
@@ -18,6 +19,13 @@
 - **Responsive Design:** Adapts to different screen sizes using media queries for a seamless experience on all devices.
 - **Interactive Gameplay:** Flip cards to find matching pairs and track your score.
 - **Sound Effects:** Few sound effects have been added in the game to make it more engaging.
+
+## Deployment
+
+
+```bash
+  https://official-tushar.github.io/Memory-Game/
+```
 
 ## Screenshots
 
