@@ -29,7 +29,7 @@ Here are some screenshots of the NeuroNinja game in action:
 
 ### Gameplay
 
-![Gameplay](screenshots/gameplay.png)
+![Gameplay](screenshots/game-play.png)
 
 ### Game End
 
