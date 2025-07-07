@@ -556,46 +556,106 @@ function endGame() {
 let isPaused = false;
 
 function stopGame() {
-    document.querySelectorAll('.controls-container').forEach(el => el.classList.remove('hide'));
+    console.log('[Game] stopGame() called');
+    // Only show game screen controls
+    document.querySelectorAll('.controls-container').forEach(el => el.classList.add('hide'));
     const gameScreen = document.getElementById('game-screen');
-    const stopButton = gameScreen.querySelector('#stop');
-    const resumeButton = gameScreen.querySelector('#resume');
-    stopButton.classList.add('hide');
-    resumeButton.classList.remove('hide');
+    if (gameScreen) {
+        const controls = gameScreen.querySelector('.controls-container');
+        if (controls) {
+            controls.classList.remove('hide');
+            console.log('[Game] Game controls shown (paused)');
+        }
+        const stopButton = gameScreen.querySelector('#stop');
+        const resumeButton = gameScreen.querySelector('#resume');
+        stopButton.classList.add('hide');
+        resumeButton.classList.remove('hide');
+        console.log('[Game] Pause button hidden, Resume button shown');
+    }
     clearInterval(interval);
     isPaused = true;
+    console.log('[Game] Timer stopped, isPaused:', isPaused);
 }
 
 function resumeGame() {
+    console.log('[Game] resumeGame() called');
+    // Only show game screen controls
+    document.querySelectorAll('.controls-container').forEach(el => el.classList.add('hide'));
     const gameScreen = document.getElementById('game-screen');
-    const stopButton = gameScreen.querySelector('#stop');
-    const resumeButton = gameScreen.querySelector('#resume');
-    stopButton.classList.remove('hide');
-    resumeButton.classList.add('hide');
+    if (gameScreen) {
+        const controls = gameScreen.querySelector('.controls-container');
+        if (controls) {
+            controls.classList.remove('hide');
+            console.log('[Game] Game controls shown (resumed)');
+        }
+        const stopButton = gameScreen.querySelector('#stop');
+        const resumeButton = gameScreen.querySelector('#resume');
+        stopButton.classList.remove('hide');
+        resumeButton.classList.add('hide');
+        console.log('[Game] Pause button shown, Resume button hidden');
+    }
     if (isPaused) {
         interval = setInterval(timeGenerator, 1000);
         isPaused = false;
+        console.log('[Game] Timer resumed, isPaused:', isPaused);
     }
 }
 
 function initializer() {
     isPaused = false;
     const gameScreen = document.getElementById('game-screen');
-    moves = gameScreen.querySelector('#moves-count'); // <-- Set global
-    timeValue = gameScreen.querySelector('#time');    // <-- Set global
+    moves = gameScreen.querySelector('#moves-count');
+    timeValue = gameScreen.querySelector('#time');
     const stopButton = gameScreen.querySelector('#stop');
-    const gameMode = gameScreen.querySelector('#game-mode');
-    const modeText = gameScreen.querySelector('#mode-text');
-    const playerInfo = gameScreen.querySelector('#player-info');
-    const player1Name = gameScreen.querySelector('#player1-name');
-    const player1Score = gameScreen.querySelector('#player1-score');
-    const player2Name = gameScreen.querySelector('#player2-name');
-    const player2Score = gameScreen.querySelector('#player2-score');
-    const turnIndicator = gameScreen.querySelector('#turn-indicator');
-    const gameContainer = gameScreen.querySelector('.game-container');
-    // Hide all controls containers
-    document.querySelectorAll('.controls-container').forEach(el => el.classList.add('hide'));
+    const resumeButton = gameScreen.querySelector('#resume');
+    stopButton.onclick = stopGame;
+    resumeButton.onclick = resumeGame;
+    // Ensure pause is visible and resume is hidden at game start
     stopButton.classList.remove('hide');
+    resumeButton.classList.add('hide');
+    // --- Quit Confirmation Modal Logic (moved here) ---
+    const endGameButton = gameScreen.querySelector('#end-game');
+    const quitModal = document.getElementById('quit-modal');
+    const quitYes = document.getElementById('quit-yes');
+    const quitNo = document.getElementById('quit-no');
+    if (endGameButton && quitModal && quitYes && quitNo) {
+      endGameButton.onclick = function() {
+        console.log('[Quit] Quit button clicked');
+        if (!isPaused) {
+          console.log('[Quit] Game is not paused, calling stopGame()');
+          stopGame();
+        } else {
+          console.log('[Quit] Game is already paused');
+        }
+        // Hide all controls so only modal is visible
+        document.querySelectorAll('.controls-container').forEach(el => el.classList.add('hide'));
+        quitModal.classList.remove('hide');
+        console.log('[Quit] Modal should now be visible');
+      };
+      quitYes.onclick = function() {
+        console.log('[Quit] YES clicked');
+        quitModal.classList.add('hide');
+        showScreen('mode-screen');
+        const modeScreen = document.getElementById('mode-screen');
+        if (modeScreen) {
+          const controls = modeScreen.querySelector('.controls-container');
+          if (controls) controls.classList.remove('hide');
+        }
+      };
+      quitNo.onclick = function() {
+        console.log('[Quit] NO clicked');
+        quitModal.classList.add('hide');
+        // Only show game screen controls
+        document.querySelectorAll('.controls-container').forEach(el => el.classList.add('hide'));
+        const gameScreen = document.getElementById('game-screen');
+        if (gameScreen) {
+          const controls = gameScreen.querySelector('.controls-container');
+          if (controls) controls.classList.remove('hide');
+        }
+        // Resume game
+        resumeGame();
+      };
+    }
 
     winCount = 0;
     movesCount = 0;
@@ -646,17 +706,8 @@ function initializer() {
     let cardValues = generateRandom();
     // Diagnostic logs
     console.log('cardValues:', cardValues);
-    console.log('gameContainer:', gameContainer);
-    matrixGenerator(gameContainer, cardValues);
-
-    // Add stop button event listener
-    const resumeButton = gameScreen.querySelector('#resume');
-    resumeButton.classList.add('hide');
-    resumeButton.onclick = resumeGame;
-    stopButton.onclick = stopGame;
-
-    const endGameButton = gameScreen.querySelector('#end-game');
-    endGameButton.onclick = endGameToModeScreen;
+    console.log('gameContainer:', gameScreen.querySelector('.game-container'));
+    matrixGenerator(gameScreen.querySelector('.game-container'), cardValues);
 }
 
 startButton.addEventListener("click", initializer);
