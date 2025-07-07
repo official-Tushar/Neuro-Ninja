@@ -459,6 +459,13 @@ function showScreen(screenId) {
       }
     }
   });
+  // Debug log
+  if (screenId === 'score-screen' || screenId === 'mode-screen') {
+    const screen = document.getElementById(screenId);
+    const controls = screen.querySelector('.controls-container');
+    console.log(`[showScreen] ${screenId} hidden:`, screen.classList.contains('hide'));
+    console.log(`[showScreen] controls-container hidden:`, controls.classList.contains('hide'));
+  }
 }
 
 // --- Button References for Navigation ---
@@ -470,7 +477,16 @@ const modeBackBtn = document.getElementById('mode-back-btn');
 // --- Navigation Event Listeners ---
 if (startBtn) {
   startBtn.addEventListener('click', () => {
+    console.log('[Play] Play button clicked');
     showScreen('mode-screen');
+    // Unhide the controls-container inside the mode screen
+    const modeScreen = document.getElementById('mode-screen');
+    const controls = modeScreen.querySelector('.controls-container');
+    if (controls) controls.classList.remove('hide');
+    setTimeout(() => {
+      console.log('[Play] modeScreen hidden:', modeScreen.classList.contains('hide'));
+      console.log('[Play] controls-container hidden:', controls.classList.contains('hide'));
+    }, 100);
   });
 }
 if (modeContinueBtn) {
@@ -481,8 +497,16 @@ if (modeContinueBtn) {
 }
 if (restartBtn) {
   restartBtn.addEventListener('click', () => {
+    console.log('[Restart] Restart button clicked');
     showScreen('start-screen');
-    // Optionally reset game state here
+    // Unhide the controls-container inside the start screen
+    const startScreen = document.getElementById('start-screen');
+    const controls = startScreen.querySelector('.controls-container');
+    if (controls) controls.classList.remove('hide');
+    setTimeout(() => {
+      console.log('[Restart] startScreen hidden:', startScreen.classList.contains('hide'));
+      console.log('[Restart] controls-container hidden:', controls.classList.contains('hide'));
+    }, 100);
   });
 }
 if (modeBackBtn) {
@@ -550,6 +574,17 @@ function endGame() {
   }
   stopGame();
   showScreen('score-screen');
+  // Unhide the controls-container inside the score screen
+  const controls = scoreScreen.querySelector('.controls-container');
+  if (controls) controls.classList.remove('hide');
+  // Debug logs
+  setTimeout(() => {
+    const scoreScreen = document.getElementById('score-screen');
+    const controls = scoreScreen.querySelector('.controls-container');
+    console.log('[endGame] scoreScreen hidden:', scoreScreen.classList.contains('hide'));
+    console.log('[endGame] controls-container hidden:', controls.classList.contains('hide'));
+    console.log('[endGame] result innerHTML:', result.innerHTML);
+  }, 100);
 }
 
 // Add a variable to track if the game is paused

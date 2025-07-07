@@ -221,7 +221,7 @@ body {
     transition: all 0.2s;
     font-size: 1em;
     font-weight: 600;
-    box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.04);
+    box-shadow: none;
     outline: none;
 }
 
@@ -235,55 +235,84 @@ body {
     background: linear-gradient(90deg, #ffd700 60%, #ff9d49 100%);
     color: #fff;
     border-color: #990011;
-    box-shadow: 0 0.2em 0.7em rgba(255,230,69,0.13);
+    box-shadow: none;
 }
 
-button {
-    border: none;
-    border-radius: 0.5em;
-    padding: 0.9em 2em;
+button, button *, .mode-btn, .difficulty-btn, #start-btn, #restart-btn, #mode-screen .mode-btn, #mode-screen #mode-continue-btn, #mode-screen #mode-back-btn, #quit-yes, #quit-no, .btn button {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+button:hover, button:active, .mode-btn:hover, .difficulty-btn:hover, #start-btn:hover, #restart-btn:hover, #mode-screen .mode-btn:hover, #mode-screen #mode-continue-btn:hover, #mode-screen #mode-back-btn:hover, #quit-yes:hover, #quit-no:hover, .btn button:hover, .btn button:active {
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+/* Uiverse.io style for Play, Start Game, Go Back, and Restart buttons */
+#start-btn, #mode-continue-btn, #mode-back-btn, #restart-btn {
+    outline: none;
     cursor: pointer;
-    background: #990011;
-    color: #fff;
+    border: none;
+    padding: 0.9rem 2rem;
+    margin: 0;
+    font-family: inherit;
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+    border-radius: 500px;
+    overflow: hidden;
+    background: #66ff66;
+    color: ghostwhite;
+    transition: background 0.4s;
+}
+#start-btn span, #mode-continue-btn span, #mode-back-btn span, #restart-btn span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+}
+#start-btn:hover span, #mode-continue-btn:hover span, #mode-back-btn:hover span, #restart-btn:hover span {
+    color: black;
+}
+#start-btn::before, #mode-continue-btn::before, #mode-back-btn::before, #restart-btn::before,
+#start-btn::after, #mode-continue-btn::after, #mode-back-btn::after, #restart-btn::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+#start-btn::before, #mode-continue-btn::before, #mode-back-btn::before, #restart-btn::before {
+    content: "";
+    background: #000;
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+#start-btn:hover::before, #mode-continue-btn:hover::before, #mode-back-btn:hover::before, #restart-btn:hover::before {
+    transform: translate3d(100%, 0, 0);
+}
+
+/* Restore custom styles and animation for Pause, Resume, and Quit buttons */
+#stop, #resume, #end-game {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.9em 2em;
+    margin: 0 0.5em;
+    font-family: inherit;
     font-size: 1.2em;
     font-weight: 700;
-    box-shadow: 0 0.2em 0.7em rgba(255,230,69,0.13);
-    margin-top: 0.7em;
-    margin-bottom: 0.2em;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-}
-
-button:hover, .controls-container button:hover {
-    background: #b71c1c;
-    color: #fffbe7;
-    box-shadow: 0 0.2em 0.7em rgba(255,230,69,0.13);
-}
-
-#stop,
-#resume,
-#end-game {
-    margin: 0 0.5em;
+    border-radius: 0.5em;
     vertical-align: middle;
-    transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.25s, transform 0.15s;
+    position: relative;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s;
+    box-shadow: none !important;
+    text-shadow: none !important;
 }
-
-#stop:hover, #resume:hover, #end-game:hover {
-    transform: scale(1.07);
-    box-shadow: 0 0 16px 4px rgba(0,0,0,0.13), 0 2px 12px 0 rgba(0,0,0,0.10);
-}
-#stop:active, #resume:active, #end-game:active {
-    transform: scale(0.96);
-    box-shadow: 0 0 8px 2px rgba(0,0,0,0.10);
-}
-
-.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
-}
-
-/* Custom Pause, Resume, Quit button styles */
 #stop {
     background: #ffd700 !important; /* yellow */
     color: #fff !important;
@@ -293,8 +322,11 @@ button:hover, .controls-container button:hover {
     background: #fff !important;
     color: #ff9800 !important; /* dark yellow/orange */
     border: 2px solid #ff9800 !important;
+    transform: scale(1.07);
 }
-
+#stop:active {
+    transform: scale(0.96);
+}
 #end-game {
     background: #d32f2f !important; /* red */
     color: #fff !important;
@@ -304,8 +336,11 @@ button:hover, .controls-container button:hover {
     background: #fff !important;
     color: #d32f2f !important;
     border: 2px solid #d32f2f !important;
+    transform: scale(1.07);
 }
-
+#end-game:active {
+    transform: scale(0.96);
+}
 #resume {
     background: #43c463 !important; /* green */
     color: #fff !important;
@@ -315,6 +350,10 @@ button:hover, .controls-container button:hover {
     background: #fff !important;
     color: #006400 !important; /* dark green */
     border: 2px solid #43c463 !important;
+    transform: scale(1.07);
+}
+#resume:active {
+    transform: scale(0.96);
 }
 
 .hide {
@@ -448,7 +487,7 @@ button:hover, .controls-container button:hover {
     border-radius: 50%;
     background: #fff;
     border: 3px solid #fffbe7;
-    box-shadow: 0 0.2em 0.7em rgba(0,0,0,0.10);
+    box-shadow: none;
     cursor: pointer;
     transition: background 0.2s, border 0.2s;
     position: relative;
@@ -464,7 +503,7 @@ button:hover, .controls-container button:hover {
     border-radius: 50%;
     background: #fff;
     border: 3px solid #fffbe7;
-    box-shadow: 0 0.2em 0.7em rgba(0,0,0,0.10);
+    box-shadow: none;
     cursor: pointer;
     transition: background 0.2s, border 0.2s;
     position: relative;
@@ -479,7 +518,7 @@ button:hover, .controls-container button:hover {
     border-radius: 50%;
     background: #fff;
     border: 3px solid #fffbe7;
-    box-shadow: 0 0.2em 0.7em rgba(0,0,0,0.10);
+    box-shadow: none;
     cursor: pointer;
     transition: background 0.2s, border 0.2s;
     position: relative;
@@ -540,7 +579,7 @@ button:hover, .controls-container button:hover {
     letter-spacing: 0.7px;
     padding: 0.4em 1.5em;
     border-radius: 1.2em;
-    box-shadow: 0 0.2em 0.7em rgba(0,0,0,0.10);
+    box-shadow: none;
     background: #43c463;
     color: #fff;
     display: inline-block;
@@ -573,7 +612,7 @@ button:hover, .controls-container button:hover {
 
 #mode-screen .controls-container {
     background: rgba(255,255,255,0.18);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    box-shadow: none;
     border-radius: 1.5em;
     border: 1.5px solid rgba(255,255,255,0.25);
     backdrop-filter: blur(10px);
@@ -601,7 +640,7 @@ button:hover, .controls-container button:hover {
     font-weight: 700;
     padding: 1em 2.5em;
     margin: 0.5em 1em;
-    box-shadow: 0 4px 24px 0 #ffd70055, 0 1.5px 4px 0 #0002;
+    box-shadow: none;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
     outline: none;
     position: relative;
@@ -609,7 +648,7 @@ button:hover, .controls-container button:hover {
 #mode-screen .mode-btn:hover, #mode-screen .mode-btn.active {
     background: linear-gradient(90deg, #ffecb3 0%, #ffd700 100%);
     color: #990011;
-    box-shadow: 0 0 16px 4px #ffd70099, 0 2px 12px 0 #ffb34755;
+    box-shadow: none;
     transform: translateY(-2px) scale(1.04);
 }
 
@@ -622,7 +661,7 @@ button:hover, .controls-container button:hover {
     font-weight: 700;
     padding: 0.9em 2.5em;
     margin: 1.2em 1em 0 1em;
-    box-shadow: 0 4px 24px 0 #43c46355, 0 1.5px 4px 0 #0002;
+    box-shadow: none;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
     outline: none;
     position: relative;
@@ -630,7 +669,7 @@ button:hover, .controls-container button:hover {
 #mode-screen #mode-continue-btn:hover, #mode-screen #mode-back-btn:hover {
     background: linear-gradient(90deg, #43e6c4 0%, #43c463 100%);
     color: #ffd700;
-    box-shadow: 0 0 16px 4px #43e6c499, 0 2px 12px 0 #43c46355;
+    box-shadow: none;
     transform: translateY(-2px) scale(1.04);
 }
 
@@ -645,7 +684,7 @@ button:hover, .controls-container button:hover {
 #mode-screen .difficulty-labels span {
     color: #fff;
     font-weight: 700;
-    text-shadow: 0 1px 4px #43c46399;
+    text-shadow: none;
 }
 
 #mode-screen .difficulty-value {
@@ -653,7 +692,7 @@ button:hover, .controls-container button:hover {
     color: #990011;
     font-weight: 800;
     border-radius: 1.2em;
-    box-shadow: 0 0.2em 0.7em #ffd70033;
+    box-shadow: none;
     padding: 0.4em 1.5em;
     margin-top: 0.4em;
     min-width: 5em;
@@ -664,7 +703,7 @@ button:hover, .controls-container button:hover {
 
 #start-screen .controls-container {
     background: rgba(255,255,255,0.18);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    box-shadow: none;
     border-radius: 1.5em;
     border: 1.5px solid rgba(255,255,255,0.25);
     backdrop-filter: blur(10px);
@@ -710,7 +749,7 @@ button:hover, .controls-container button:hover {
     font-weight: 800;
     padding: 1em 3em;
     margin-top: 2em;
-    box-shadow: 0 4px 24px 0 #43c46355, 0 1.5px 4px 0 #0002;
+    box-shadow: none;
     transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
     outline: none;
     position: relative;
@@ -719,13 +758,13 @@ button:hover, .controls-container button:hover {
 #start-btn:hover {
     background: linear-gradient(90deg, #43e6c4 0%, #43c463 100%);
     color: #ffd700;
-    box-shadow: 0 0 16px 4px #43e6c499, 0 2px 12px 0 #43c46355;
+    box-shadow: none;
     transform: translateY(-2px) scale(1.04);
 }
 
 #score-screen .controls-container {
     background: rgba(255,255,255,0.28);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    box-shadow: none;
     border-radius: 2em;
     border: 2px solid #ffd70099;
     backdrop-filter: blur(12px);
@@ -744,17 +783,21 @@ button:hover, .controls-container button:hover {
 }
 
 #score-screen #result h2 {
-    font-size: 2.5em;
+    font-size: 2.7em;
     font-family: "Poppins", sans-serif;
-    color: #43c463;
+    color: #1a8f3c;
     margin-bottom: 0.4em;
     letter-spacing: 1.5px;
-    text-shadow: 0 0.1em 0.3em #ffd70088, 0 2px 8px #0008;
     font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.4em;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    text-shadow: none;
 }
 #score-screen #result h2::before {
     content: '🏆';
@@ -763,34 +806,61 @@ button:hover, .controls-container button:hover {
 }
 
 #score-screen #result h4 {
-    font-size: 1.3em;
+    font-size: 1.7em;
     font-family: "Poppins", sans-serif;
     margin: 0.5em 0 1.2em 0;
-    color: #ffd700;
+    color: #222;
     letter-spacing: 0.7px;
-    text-shadow: 0 0.1em 0.3em #43c46355;
+    font-weight: 800;
+    text-shadow: none;
 }
 
 #restart-btn {
-    background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
-    color: #990011;
-    border: none;
-    border-radius: 1.2em;
-    font-size: 1.3em;
-    font-weight: 800;
-    padding: 1.1em 2.7em;
-    margin-top: 2.2em;
-    box-shadow: 0 4px 24px 0 #ffd70055, 0 1.5px 4px 0 #0002;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
     outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 0.9rem 2rem;
+    margin: 0;
+    font-family: inherit;
+    font-size: 17px;
     position: relative;
-    letter-spacing: 1px;
+    display: inline-block;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+    border-radius: 500px;
+    overflow: hidden;
+    background: #66ff66;
+    color: ghostwhite;
+    transition: background 0.4s;
+    margin-top: 2.2em;
 }
-#restart-btn:hover {
-    background: linear-gradient(90deg, #ffecb3 0%, #ffd700 100%);
-    color: #fff;
-    box-shadow: 0 0 16px 4px #ffd70099, 0 2px 12px 0 #ffb34755;
-    transform: translateY(-2px) scale(1.04);
+#restart-btn span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+}
+#restart-btn:hover span {
+    color: black;
+}
+#restart-btn::before,
+#restart-btn::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+#restart-btn::before {
+    content: "";
+    background: #000;
+    width: 120%;
+    left: -10%;
+    transform: skew(30deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+#restart-btn:hover::before {
+    transform: translate3d(100%, 0, 0);
 }
 
 #start-btn:hover,
@@ -828,7 +898,7 @@ button:hover, .controls-container button:hover {
     background: #fffbe7;
     border-radius: 1.2em;
     padding: 2.2em 2.5em 1.5em 2.5em;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    box-shadow: none;
     text-align: center;
     min-width: 320px;
     max-width: 90vw;
@@ -875,5 +945,27 @@ button:hover, .controls-container button:hover {
     color: #006400 !important;
     border: 2px solid #43c463 !important;
     transform: scale(1.06);
+}
+
+#start-btn, #restart-btn, #mode-screen .mode-btn, #mode-screen #mode-continue-btn, #mode-screen #mode-back-btn, .mode-btn, .difficulty-btn, #quit-yes, #quit-no {
+    box-shadow: none !important;
+}
+
+button:hover, .controls-container button:hover,
+#stop:hover, #resume:hover, #end-game:hover,
+#stop:active, #resume:active, #end-game:active,
+#start-btn:hover, #restart-btn:hover, #mode-screen .mode-btn:hover, #mode-screen #mode-continue-btn:hover, #mode-screen #mode-back-btn:hover, .mode-btn:hover, .difficulty-btn:hover, #quit-yes:hover, #quit-no:hover {
+    box-shadow: none !important;
+}
+
+/* NOTE: In index.html, wrap the Play button text in a <span> for #start-btn */
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2em;
+    margin-top: 1.2em;
 }
 
