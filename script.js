@@ -397,36 +397,45 @@ const getStrategicMove = (unmatchedCards) => {
 };
 
 const executeComputerMove = (firstCard, secondCard) => {
+    // Set delay based on difficulty
+    let delay;
+    switch (computerDifficulty) {
+        case "easy":
+            delay = 1000;
+            break;
+        case "medium":
+            delay = 700;
+            break;
+        case "hard":
+            delay = 400;
+            break;
+        default:
+            delay = 1000;
+    }
     // Simulate computer's first card selection
     setTimeout(() => {
         firstCard.classList.add("flipped");
         flipSound.play();
-        
         // Update computer memory
         const firstCardValue = firstCard.getAttribute("data-card-value");
         const firstCardIndex = firstCard.getAttribute("data-index");
         computerMemory.set(firstCardIndex, firstCardValue);
-        
         // Simulate computer's second card selection
         setTimeout(() => {
             secondCard.classList.add("flipped");
             flipSound.play();
-            
             // Update computer memory
             const secondCardValue = secondCard.getAttribute("data-card-value");
             const secondCardIndex = secondCard.getAttribute("data-index");
             computerMemory.set(secondCardIndex, secondCardValue);
-            
             if (firstCardValue === secondCardValue) {
                 // Computer found a match
                 firstCard.classList.add("matched");
                 secondCard.classList.add("matched");
                 matchSound.play();
-                
                 player2ScoreCount++;
                 player2Score.textContent = player2ScoreCount;
                 winCount++;
-                
                 if (winCount == Math.floor(cards.length / 2)) {
                     endGame();
                 } else {
@@ -442,8 +451,8 @@ const executeComputerMove = (firstCard, secondCard) => {
                     isComputerTurn = false;
                 }, 900);
             }
-        }, 500);
-    }, 500);
+        }, delay);
+    }, delay);
 };
 
 // --- Screen Navigation Logic ---
