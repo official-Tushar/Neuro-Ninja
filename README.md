@@ -38,7 +38,7 @@ Welcome to **NeuroNinja** – an immersive and interactive memory card game buil
 
 Play the live version here:
 
-🔗 [NeuroNinja Memory Game](https://official-tushar.github.io/Memory-Game/)
+🔗 [NeuroNinja Memory Game](https://memory-game-gilt-five.vercel.app/)
 
 ---
 
