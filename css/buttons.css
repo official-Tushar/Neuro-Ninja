@@ -1,0 +1,197 @@
+#start-btn,
+#mode-continue-btn,
+#mode-back-btn,
+#restart-btn {
+  cursor: pointer;
+  margin: 0;
+  padding: 0.9em 2em;
+  font-family: inherit;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  overflow: hidden;
+  transition: background 0.4s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+#start-btn span,
+#mode-continue-btn span,
+#mode-back-btn span,
+#restart-btn span {
+  position: relative;
+  z-index: 10;
+  transition: color 0.4s;
+}
+
+#start-btn:hover span,
+#mode-continue-btn:hover span,
+#mode-back-btn:hover span,
+#restart-btn:hover span {
+  color: black;
+}
+
+#start-btn::before,
+#mode-continue-btn::before,
+#mode-back-btn::before,
+#restart-btn::before,
+#start-btn::after,
+#mode-continue-btn::after,
+#mode-back-btn::after,
+#restart-btn::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#start-btn::before,
+#mode-continue-btn::before,
+#mode-back-btn::before,
+#restart-btn::before {
+  content: "";
+  background: #000;
+  width: 120%;
+  left: -10%;
+  transform: skew(30deg);
+  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+}
+#start-btn:hover::before,
+#mode-continue-btn:hover::before,
+#mode-back-btn:hover::before,
+#restart-btn:hover::before {
+  transform: translate3d(100%, 0, 0);
+}
+
+#start-btn {
+  background: linear-gradient(90deg, #43c463 0%, #43e6c4 100%);
+  color: #fff;
+  border-radius: 1em;
+  font-size: 1.4em;
+  margin-top: 2em;
+  letter-spacing: 1px;
+}
+#start-btn:hover {
+  background: linear-gradient(90deg, #43e6c4 0%, #43c463 100%);
+  color: #ffd700;
+  transform: translateY(-2px) scale(1.04);
+}
+
+#restart-btn {
+  background: #66ff66;
+  color: ghostwhite;
+  border-radius: 500px;
+  font-size: 17px;
+  margin-top: 2.2em;
+}
+
+#mode-screen #mode-continue-btn,
+#mode-screen #mode-back-btn {
+  background: linear-gradient(90deg, #43c463 0%, #43e6c4 100%);
+  color: #fff;
+  border-radius: 1em;
+  font-size: 1.2em;
+  margin: 1.2em 1em 0 1em;
+}
+#mode-screen #mode-continue-btn:hover,
+#mode-screen #mode-back-btn:hover {
+  background: linear-gradient(90deg, #43e6c4 0%, #43c463 100%);
+  color: #ffd700;
+  transform: translateY(-2px) scale(1.04);
+}
+
+#stop,
+#resume,
+#end-game {
+  cursor: pointer;
+  margin: 0 0.5em;
+  padding: 0.9em 2em;
+  font-family: inherit;
+  font-size: 1.2em;
+  font-weight: 700;
+  border-radius: 0.5em;
+  vertical-align: middle;
+  position: relative;
+  display: inline-block;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s;
+}
+#stop {
+  background: #ffd700 !important; /* yellow */
+  color: #fff !important;
+  border: 2px solid #ffd700 !important;
+}
+#stop:hover {
+  background: #fff !important;
+  color: #ff9800 !important; /* dark yellow/orange */
+  border: 2px solid #ff9800 !important;
+  transform: scale(1.07);
+}
+#stop:active {
+  transform: scale(0.96);
+}
+#end-game {
+  background: #d32f2f !important; /* red */
+  color: #fff !important;
+  border: 2px solid #d32f2f !important;
+}
+#end-game:hover {
+  background: #fff !important;
+  color: #d32f2f !important;
+  border: 2px solid #d32f2f !important;
+  transform: scale(1.07);
+}
+#end-game:active {
+  transform: scale(0.96);
+}
+#resume {
+  background: #43c463 !important; /* green */
+  color: #fff !important;
+  border: 2px solid #43c463 !important;
+}
+#resume:hover {
+  background: #fff !important;
+  color: #006400 !important; /* dark green */
+  border: 2px solid #43c463 !important;
+  transform: scale(1.07);
+}
+#resume:active {
+  transform: scale(0.96);
+}
+
+.mode-buttons {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#mode-screen .mode-btn {
+  background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+  color: #222;
+  border: none;
+  border-radius: 1em;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 1em 2.5em;
+  margin: 0.5em 1em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+  position: relative;
+}
+#mode-screen .mode-btn:hover,
+#mode-screen .mode-btn.active {
+  background: linear-gradient(90deg, #ffecb3 0%, #ffd700 100%);
+  color: #990011;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+}

@@ -1,0 +1,296 @@
+@media (max-width: 900px) {
+  #logo,
+  #neuro,
+  #ninja {
+    width: 9em !important;
+  }
+  #start-btn,
+  #restart-btn,
+  #mode-continue-btn,
+  #mode-back-btn,
+  #stop,
+  #resume,
+  #end-game {
+    font-size: 1.1em;
+    padding: 0.7em 2em;
+  }
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    max-width: 22em;
+    padding: 2.5em 1em 1em;
+    border-radius: 0.7em;
+  }
+  .card-container {
+    width: 4em;
+    height: 4em;
+  }
+  .player-info {
+    font-size: 0.95em;
+    padding: 0.5em 0.2em 0.4em;
+  }
+  #logo,
+  #neuro,
+  #ninja {
+    width: 7em !important;
+  }
+  #moves-count,
+  #time,
+  #game-mode {
+    font-size: 1em;
+  }
+  #stop,
+  #resume,
+  #end-game {
+    font-size: 0.85em;
+    padding: 0.5em 1.5em;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrapper {
+    max-width: 20em;
+    padding: 2em 0.5em 0.5em;
+  }
+  .card-container {
+    width: 3.5em;
+    height: 3.5em;
+  }
+  #moves-count,
+  #time,
+  #game-mode {
+    font-size: 0.85em;
+  }
+  .player-info {
+    font-size: 0.85em;
+  }
+}
+
+@media (max-width: 900px) {
+  #mode-screen .controls-container {
+    padding: 1.5em 0.7em 1em;
+    border-radius: 1em;
+  }
+  #mode-screen h3 {
+    font-size: 1.5em;
+    margin-bottom: 0.8em;
+  }
+  .mode-buttons {
+    gap: 0.4em;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  #mode-screen #mode-continue-btn,
+  #mode-screen #mode-back-btn {
+    font-size: 0.8em;
+    padding: 0.7em 1.5em;
+    min-width: 8em;
+    border-radius: 0.8em;
+    margin: 1em 0.5em 0 0.5em;
+  }
+
+  .mode-buttons #single-player,
+  .mode-buttons #player-vs-player,
+  .mode-buttons #player-vs-computer {
+    font-size: 1em;
+    padding: 0.7em 2em;
+    min-width: 8em;
+    border-radius: 0.8em;
+    margin: 1em 0.5em 0 0.5em;
+  }
+  .difficulty-selection h3 {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 700px) {
+  #mode-screen .controls-container {
+    border-radius: 0.7em;
+    background: rgba(255, 255, 255, 0.25); /* subtle overlay */
+  }
+  #mode-screen h3 {
+    font-size: 1.2em;
+    margin-bottom: 0.7em;
+  }
+  .mode-buttons {
+    flex-direction: column;
+    gap: 0.7em;
+    align-items: stretch;
+  }
+  .difficulty-slider {
+    width: 260px;
+    height: 2em;
+  }
+
+  .difficulty-slider::-webkit-slider-thumb {
+    width: 1.8em;
+    height: 1.8em;
+    margin-top: -0.7em;
+  }
+
+  .difficulty-slider::-moz-range-thumb,
+  .difficulty-slider::-ms-thumb {
+    width: 1.8em;
+    height: 1.8em;
+  }
+  #difficulty-selection {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 400px) {
+  #mode-screen .controls-container {
+    border-radius: 0.5em;
+  }
+  #mode-screen h3 {
+    font-size: 1em;
+  }
+  #mode-continue-btn,
+  #mode-back-btn {
+    font-size: 0.85em;
+    padding: 0.5em 0.5em;
+  }
+  .mode-buttons #single-player,
+  .mode-buttons #player-vs-player,
+  .mode-buttons #player-vs-computer {
+    font-size: 0.85em;
+    padding: 0.5em 1.6em;
+  }
+  .difficulty-slider {
+    width: 240px;
+    height: 1.8em;
+  }
+
+  .difficulty-slider::-webkit-slider-thumb {
+    width: 1.6em;
+    height: 1.6em;
+    margin-top: -0.65em;
+  }
+
+  .difficulty-slider::-moz-range-thumb,
+  .difficulty-slider::-ms-thumb {
+    width: 1.6em;
+    height: 1.6em;
+  }
+  #difficulty-selection {
+    font-size: 0.6em;
+  }
+}
+
+@media (max-width: 900px) {
+  .modal-content {
+    min-width: 220px;
+    max-width: 98vw;
+    padding: 1.5em 1.2em 1em 1.2em;
+    border-radius: 1em;
+  }
+  .modal-content p {
+    font-size: 1.05em;
+    margin-bottom: 1em;
+  }
+  .modal-actions {
+    gap: 1em;
+  }
+  #quit-yes,
+  #quit-no {
+    font-size: 1em;
+    padding: 0.6em 1.2em;
+    border-radius: 0.6em;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    min-width: 120px;
+    max-width: 85vw;
+    padding: 1em 0.5em 0.7em 0.5em;
+    border-radius: 0.7em;
+  }
+  .modal-content p {
+    font-size: 0.95em;
+  }
+  #quit-yes,
+  #quit-no {
+    font-size: 0.95em;
+    padding: 0.5em 1.2em;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal-content {
+    padding: 0.5em 0.2em 0.3em 0.2em;
+    border-radius: 0.5em;
+  }
+  .modal-content p {
+    font-size: 0.85em;
+  }
+  #quit-yes,
+  #quit-no {
+    font-size: 0.85em;
+    padding: 0.4em 0.4em;
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  #score-screen .controls-container {
+    max-width: 450px;
+    padding: 2em 1em 1.5em 1em;
+    border-radius: 1.2em;
+  }
+  #score-screen #result h2 {
+    font-size: 2.3em;
+  }
+  #score-screen #result h4 {
+    font-size: 1.2em;
+  }
+  #restart-btn {
+    font-size: 1em;
+    padding: 0.7em 2em;
+    margin-top: 1.5em;
+    border-radius: 1em;
+  }
+}
+
+@media (max-width: 600px) {
+  #score-screen .controls-container {
+    max-width: 350px;
+    padding: 1em 0.3em 1em 0.3em;
+    border-radius: 0.8em;
+  }
+  #score-screen #result h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+  }
+  #score-screen #result h4 {
+    font-size: 1em;
+    margin: 0.2em 0 0.7em 0;
+  }
+  #restart-btn {
+    font-size: 0.95em;
+    padding: 0.6em 1em;
+    margin-top: 1em;
+    border-radius: 1em;
+  }
+}
+
+@media (max-width: 400px) {
+  #score-screen .controls-container {
+    max-width: 270px;
+    border-radius: 0.5em;
+  }
+  #score-screen #result h2 {
+    font-size: 1.5em;
+  }
+  #score-screen #result h4 {
+    font-size: 1em;
+  }
+  #restart-btn {
+    font-size: 0.85em;
+    padding: 0.5em 0.5em;
+    border-radius: 0.7em;
+  }
+}

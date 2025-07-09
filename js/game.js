@@ -147,7 +147,11 @@ const matrixGenerator = (container, cardValues, size = 4) => {
 };
 
 const handleCardClick = (card) => {
-  if (isPaused || isComputerTurn || boardLocked) return;
+  console.log('[Player] Card clicked. isPaused:', isPaused, 'isComputerTurn:', isComputerTurn, 'boardLocked:', boardLocked);
+  if (isPaused || isComputerTurn || boardLocked) {
+    console.log('[Player] Click blocked: isPaused or isComputerTurn or boardLocked');
+    return;
+  }
   if (card.classList.contains("matched") || card.classList.contains("flipped")) return;
 
   card.classList.add("flipped");
@@ -202,7 +206,11 @@ const switchTurn = () => {
 
 // Enhanced AI with different difficulty levels
 const makeComputerMove = () => {
-  if (isPaused) return;
+  console.log('[AI] Attempting computer move. isPaused:', isPaused);
+  if (isPaused) {
+    console.log('[AI] Move blocked: game is paused.');
+    return;
+  }
   const unmatchedCards = Array.from(cards).filter(card => 
       !card.classList.contains("matched") && !card.classList.contains("flipped")
   );
@@ -345,6 +353,7 @@ const executeComputerMove = (firstCard, secondCard) => {
   }
   // Simulate computer's first card selection
   setTimeout(() => {
+      if (isPaused) return;
       firstCard.classList.add("flipped");
       playFlipSound();
       // Update computer memory
@@ -432,6 +441,7 @@ let isPaused = false;
 function stopGame() {
   clearInterval(interval);
   isPaused = true;
+  console.log('[Pause] Game paused. isPaused:', isPaused);
   const gameScreen = document.getElementById("game-screen");
   gameScreen.querySelector('#stop')?.classList.add('hide');
   gameScreen.querySelector('#resume')?.classList.remove('hide');
@@ -439,6 +449,8 @@ function stopGame() {
 
 function resumeGame() {
   if (!isPaused) return;
+  isPaused = false;
+  console.log('[Resume] Game resumed. isPaused:', isPaused);
   interval = setInterval(() => {
     const result = timeGenerator(seconds, minutes, timeValue);
     seconds = result.seconds;
@@ -448,6 +460,12 @@ function resumeGame() {
   const gameScreen = document.getElementById("game-screen");
   gameScreen.querySelector('#stop')?.classList.remove('hide');
   gameScreen.querySelector('#resume')?.classList.add('hide');
+
+  // --- FIX: If it's computer's turn, trigger the AI move ---
+  if (isComputerTurn) {
+    console.log('[Resume] It is computer\'s turn, triggering makeComputerMove()');
+    makeComputerMove();
+  }
 }
 
 export {

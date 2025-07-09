@@ -1,0 +1,280 @@
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-evenly;
+    gap: 0.7em;
+    padding-bottom: 2em;
+}
+
+.card-container {
+    position: relative;
+    width: 6em;
+    height: 6em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 800px;
+    border-radius: 0.7em;
+    box-shadow: 0 0.2em 0.7em rgba(0,0,0,0.08);
+    background: rgba(255,255,255,0.98); /* Ensure cards are fully visible */
+    transition: box-shadow 0.2s;
+}
+
+.card-container:hover {
+    box-shadow: 0 0.5em 1.5em rgba(255,230,69,0.13), 0 0.2em 0.7em rgba(0,0,0,0.10);
+}
+
+.card-container.flipped .card-before {
+    transform: rotateY(180deg);
+}
+
+.card-container.flipped .card-after {
+    transform: rotateY(0deg);
+}
+
+.card-before,
+.card-after {
+    position: absolute;
+    border-radius: 0.7em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid #e0e0e0;
+    transition: transform 0.7s cubic-bezier(.4,2,.6,1);
+    backface-visibility: hidden;
+    background: #fff;
+    box-shadow: 0 0.1em 0.3em rgba(0,0,0,0.04);
+}
+
+.card-before img, .card-after img {
+    width: 92%;
+    height: 92%;
+    object-fit: contain;
+    border-radius: 0.6em;
+}
+
+.card-after {
+    transform: rotateY(180deg);
+    overflow: hidden;
+}
+
+.player-info {
+    background: rgba(255,255,255,0.13);
+    border-radius: 0.7em;
+    padding: 1em 0.5em 0.7em;
+    margin-bottom: 1.2em;
+    text-align: center;
+    box-shadow: 0 0.2em 0.7em rgba(0,0,0,0.07);
+}
+
+.player-score {
+    display: inline-block;
+    margin: 0 1.2em;
+    color: #fcf6f5;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.current-turn {
+    margin-top: 0.7em;
+    color: #fcf6f5;
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: 0.5px;
+}
+
+.current-turn.active-player1 {
+    color: #ffd700;
+}
+
+.current-turn.active-player2 {
+    color: #ff6b6b;
+}
+
+#result {
+    text-align: center;
+    margin-top: 0.7em;
+}
+
+#score-screen #result h2 {
+    font-size: 2.7em;
+    font-family: "Poppins", sans-serif;
+    color: #1a8f3c;
+    margin-bottom: 0.4em;
+    letter-spacing: 1.5px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    text-shadow: none;
+}
+#score-screen #result h2::before {
+    content: '🏆';
+    font-size: 1.5em;
+    margin-right: 0.2em;
+}
+
+#score-screen #result h4 {
+    font-size: 1.7em;
+    font-family: "Poppins", sans-serif;
+    margin: 0.5em 0 1.2em 0;
+    color: #222;
+    letter-spacing: 0.7px;
+    font-weight: 800;
+    text-shadow: none;
+}
+
+.difficulty-slider-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5em 0 0.2em 0;
+}
+.difficulty-slider {
+    width: 340px;
+    max-width: 98vw;
+    margin: 0.5em 0 0.2em 0;
+    accent-color: #43c463;
+    background: transparent;
+    height: 2.2em;
+    -webkit-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 1;
+}
+.difficulty-slider.easy::-webkit-slider-runnable-track {
+    height: 0.6em;
+    background: #43c463;
+    border-radius: 0.4em;
+}
+.difficulty-slider.medium::-webkit-slider-runnable-track {
+    height: 0.6em;
+    background: #ffd700;
+    border-radius: 0.4em;
+}
+.difficulty-slider.hard::-webkit-slider-runnable-track {
+    height: 0.6em;
+    background: #e74c3c;
+    border-radius: 0.4em;
+}
+.difficulty-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #fffbe7;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    position: relative;
+    z-index: 2;
+    margin-top: -0.75em;
+}
+.difficulty-slider:focus::-webkit-slider-thumb {
+    border: 3px solid #990011;
+}
+.difficulty-slider::-moz-range-thumb {
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #fffbe7;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    position: relative;
+    z-index: 2;
+}
+.difficulty-slider:focus::-moz-range-thumb {
+    border: 3px solid #990011;
+}
+.difficulty-slider::-ms-thumb {
+    width: 2.1em;
+    height: 2.1em;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid #fffbe7;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    position: relative;
+    z-index: 2;
+}
+.difficulty-slider:focus::-ms-thumb {
+    border: 3px solid #990011;
+}
+.difficulty-slider.easy::-ms-fill-lower {
+    background: #43c463;
+    border-radius: 0.4em;
+}
+.difficulty-slider.medium::-ms-fill-lower {
+    background: #ffd700;
+    border-radius: 0.4em;
+}
+.difficulty-slider.hard::-ms-fill-lower {
+    background: #e74c3c;
+    border-radius: 0.4em;
+}
+.difficulty-slider.easy::-ms-fill-upper {
+    background: #43c463;
+    border-radius: 0.4em;
+}
+.difficulty-slider.medium::-ms-fill-upper {
+    background: #ffd700;
+    border-radius: 0.4em;
+}
+.difficulty-slider.hard::-ms-fill-upper {
+    background: #e74c3c;
+    border-radius: 0.4em;
+}
+.difficulty-slider:focus {
+    outline: none;
+}
+.difficulty-labels {
+    width: 340px;
+    max-width: 98vw;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.08em;
+    font-weight: 700;
+    color: #990011;
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+    letter-spacing: 0.5px;
+    padding: 0 0.5em;
+}
+.difficulty-labels span {
+    flex: 1 1 0;
+    text-align: center;
+}
+
+.stats-container {
+    text-align: right;
+    margin-bottom: 0.8em;
+    margin-top: -2em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: flex-end;
+}
+
+.stats-container span {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+#moves-count, #time, #game-mode {
+    color: #fcf6f5;
+    font-size: 1.1em;
+}

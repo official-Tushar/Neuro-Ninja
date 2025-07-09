@@ -1,0 +1,18 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html, body {
+    /* overflow-y: auto !important; */
+    background-color: #fcf6f5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: url('../assets/images/gameBg.jpg') center center/cover no-repeat;
+}
+
+.hide {
+    display: none !important;
+}

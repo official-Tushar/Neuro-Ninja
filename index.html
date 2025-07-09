@@ -1,111 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NeuroNinja</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="icon" href="./assets/images/favicon.png" type="image/png">
+    <link rel="icon" href="./assets/images/favicon.png" type="image/png" />
 
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/game.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
     <!-- Start Screen -->
     <div id="start-screen">
-        <div class="controls-container">
-            <img src="./assets/images/favicon.png" id="logo"/>
-            <div class="heading">
-                <img src="./assets/images/neuro.png" id="neuro"/>
-                <img src="./assets/images/ninja.png" id="ninja"/>
-            </div>
-            <button id="start-btn"><span>Play</span></button>
+      <div class="controls-container">
+        <img src="./assets/images/favicon.png" id="logo" />
+        <div class="heading">
+          <img src="./assets/images/neuro.png" id="neuro" />
+          <img src="./assets/images/ninja.png" id="ninja" />
         </div>
+        <button id="start-btn"><span>Play</span></button>
+      </div>
     </div>
 
     <!-- Mode Selection Screen -->
     <div id="mode-screen" class="hide">
-        <div class="controls-container">
-            <h3>Select Game Mode:</h3>
-            <div class="mode-buttons">
-                <button id="single-player" class="mode-btn active">Single Player</button>
-                <button id="player-vs-player" class="mode-btn">Player vs Player</button>
-                <button id="player-vs-computer" class="mode-btn">Player vs Computer</button>
-            </div>
-            <div class="difficulty-selection hide" id="difficulty-selection">
-                <h3>Select Difficulty:</h3>
-                <div class="difficulty-slider-container">
-                    <input type="range" min="0" max="2" value="0" id="difficulty-slider" class="difficulty-slider">
-                    <div class="difficulty-labels">
-                        <span id="label-easy">Easy</span>
-                        <span id="label-medium">Medium</span>
-                        <span id="label-hard">Hard</span>
-                    </div>
-                    <div class="difficulty-value" id="difficulty-value">Easy</div>
-                </div>
-            </div>
-            <div class="mode-action-buttons">
-                <button id="mode-continue-btn"><span>Start Game</span></button>
-                <button id="mode-back-btn"><span>Go Back</span></button>
-            </div>
+      <div class="controls-container">
+        <h3>Select Game Mode:</h3>
+        <div class="mode-buttons">
+          <button id="single-player" class="mode-btn active">
+            Single Player
+          </button>
+          <button id="player-vs-player" class="mode-btn">
+            Player vs Player
+          </button>
+          <button id="player-vs-computer" class="mode-btn">
+            Player vs Computer
+          </button>
         </div>
+        <div class="difficulty-selection hide" id="difficulty-selection">
+          <h3>Select Difficulty:</h3>
+          <div class="difficulty-slider-container">
+            <input
+              type="range"
+              min="0"
+              max="2"
+              value="0"
+              id="difficulty-slider"
+              class="difficulty-slider"
+            />
+            <div class="difficulty-labels">
+              <span id="label-easy">Easy</span>
+              <span id="label-medium">Medium</span>
+              <span id="label-hard">Hard</span>
+            </div>
+            <div class="difficulty-value" id="difficulty-value">Easy</div>
+          </div>
+        </div>
+        <div class="mode-action-buttons">
+          <button id="mode-continue-btn"><span>Start Game</span></button>
+          <button id="mode-back-btn"><span>Go Back</span></button>
+        </div>
+      </div>
     </div>
 
     <!-- Game Screen -->
     <div id="game-screen" class="hide">
-        <div class="wrapper">
-            <div class="stats-container">
-                <div id="moves-count">
-                    <span>Moves:</span> 0
-                </div>
-                <div id="time">
-                    <span>Time:</span> 00:00
-                </div>
-                <div id="game-mode" class="hide">
-                    <span>Mode:</span> <span id="mode-text">Single Player</span>
-                </div>
-            </div>
-            <div class="player-info hide" id="player-info">
-                <div class="player-score">
-                    <span id="player1-name">Player 1:</span> <span id="player1-score">0</span>
-                </div>
-                <div class="player-score">
-                    <span id="player2-name">Player 2:</span> <span id="player2-score">0</span>
-                </div>
-                <div class="current-turn">
-                    <span id="turn-indicator">Player 1's Turn</span>
-                </div>
-            </div>
-            <div class="game-container"></div>
-            <div class="btn">
-                <button id="stop" class="hide">Pause</button>
-                <button id="resume" class="hide">Resume</button>
-                <button id="end-game">Quit</button>
-            </div>
+      <div class="wrapper">
+        <div class="stats-container">
+          <div id="moves-count"><span>Moves:</span> 0</div>
+          <div id="time"><span>Time:</span> 00:00</div>
+          <div id="game-mode" class="hide">
+            <span>Mode:</span> <span id="mode-text">Single Player</span>
+          </div>
         </div>
+        <div class="player-info hide" id="player-info">
+          <div class="player-score">
+            <span id="player1-name">Player 1:</span>
+            <span id="player1-score">0</span>
+          </div>
+          <div class="player-score">
+            <span id="player2-name">Player 2:</span>
+            <span id="player2-score">0</span>
+          </div>
+          <div class="current-turn">
+            <span id="turn-indicator">Player 1's Turn</span>
+          </div>
+        </div>
+        <div class="game-container"></div>
+        <div class="btn">
+          <button id="stop" class="hide">Pause</button>
+          <button id="resume" class="hide">Resume</button>
+          <button id="end-game">Quit</button>
+        </div>
+      </div>
     </div>
 
     <!-- Score Screen -->
     <div id="score-screen" class="hide">
-        <div class="controls-container">
-            <p id="result"></p>
-            <button id="restart-btn"><span>Restart</span></button>
-        </div>
+      <div class="controls-container">
+        <p id="result"></p>
+        <button id="restart-btn"><span>Restart</span></button>
+      </div>
     </div>
 
     <!-- Quit Confirmation Modal -->
     <div id="quit-modal" class="modal hide">
-        <div class="modal-content">
-            <p>All the progress will be lost. Are you sure you want to quit?</p>
-            <div class="modal-actions">
-                <button id="quit-yes">Yes</button>
-                <button id="quit-no">No</button>
-            </div>
+      <div class="modal-content">
+        <p>All the progress will be lost. Are you sure you want to quit?</p>
+        <div class="modal-actions">
+          <button id="quit-yes" class="quit-btn">Yes</button>
+          <button id="quit-no" class="quit-btn">No</button>
         </div>
+      </div>
     </div>
 
     <audio id="flip-sound" src="./assets/audio/flip.mp3"></audio>
@@ -113,5 +131,5 @@
     <audio id="victory-sound" src="./assets/audio/victory.mp3"></audio>
 
     <script type="module" src="js/main.js"></script>
-</body>
+  </body>
 </html>

@@ -12,6 +12,11 @@ function showScreen(screenId) {
     if (el) {
       if (id === screenId) {
         el.classList.remove('hide');
+        // Unhide controls-container for mode-screen
+        if (id === 'mode-screen') {
+          const controls = el.querySelector('.controls-container');
+          if (controls) controls.classList.remove('hide');
+        }
         // Unhide controls-container for start-screen
         if (id === 'start-screen') {
           const controls = el.querySelector('.controls-container');
