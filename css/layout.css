@@ -32,6 +32,13 @@
     background: url('../assets/images/gameModeBg.jpg') center center/cover no-repeat;
 }
 
+#game-screen {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 .controls-container {
     display: flex;
     gap: 1.2em;
